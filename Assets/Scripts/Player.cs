@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class Player : MonoSingleton<Player> {
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
     public Sprite[] sprites;
-    private int spriteIndex;
+    private int _spriteIndex;
     public Vector3 direction;
     public float gravity = -9.8f;
     public float strength = 5f;
@@ -11,7 +11,7 @@ public class Player : MonoSingleton<Player> {
     public AudioClip swing;
     
     public override void Init() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start() {
@@ -38,13 +38,13 @@ public class Player : MonoSingleton<Player> {
     }
 
     private void AnimateSprite() {
-        spriteIndex++;
+        _spriteIndex++;
 
-        if (spriteIndex >= sprites.Length) {
-            spriteIndex = 0;
+        if (_spriteIndex >= sprites.Length) {
+            _spriteIndex = 0;
         }
 
-        spriteRenderer.sprite = sprites[spriteIndex];
+        _spriteRenderer.sprite = sprites[_spriteIndex];
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

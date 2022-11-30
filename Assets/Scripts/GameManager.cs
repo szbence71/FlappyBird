@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager> {
     public GameObject backButton;
     public GameObject gameOver;
     public GameObject getReady;
-    private int score;
+    private int _score;
     public AudioClip scoreAudio;
 
     public override void Init() {
@@ -27,8 +27,8 @@ public class GameManager : MonoSingleton<GameManager> {
     }
 
     public void Play() {
-        score = 0;
-        scoreText.text = score.ToString();
+        _score = 0;
+        scoreText.text = _score.ToString();
         Player.Instance.transform.position = Vector3.zero;
         Player.Instance.direction = Vector3.up * Player.Instance.strength;
         
@@ -70,9 +70,9 @@ public class GameManager : MonoSingleton<GameManager> {
     }
     
     public void IncreaseScore() {
-        score++;
+        _score++;
         AudioSource.PlayClipAtPoint(scoreAudio, Vector3.zero, 1);
-        scoreText.text = score.ToString();
+        scoreText.text = _score.ToString();
     }
 
     public void PercentChange() {
